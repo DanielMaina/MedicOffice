@@ -1,0 +1,46 @@
+﻿@model MedicalOffice.Models.Employee
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<h2>Profile for: @Model.FullName</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FavouriteIceCream)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FavouriteIceCream)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.eMail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.eMail)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit Profile</a>
+</div>

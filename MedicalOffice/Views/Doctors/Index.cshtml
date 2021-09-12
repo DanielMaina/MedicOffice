@@ -1,0 +1,80 @@
+﻿@model IEnumerable<MedicalOffice.Models.Doctor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-action="Index">
+    <table class="table">
+        <colgroup>
+            <col span="1" />
+            <col width="300" , span="1" />
+            <col span="1" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FullName)
+                </th>
+                <th>
+                    Specialties
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td>
+                        @{
+                            int specCount = item.DoctorSpecialties.Count;
+                            if (specCount > 0)
+                            {
+                                string firstSpec = item.DoctorSpecialties.FirstOrDefault().Specialty.SpecialtyName;
+                                if (specCount > 1)
+                                {
+                                    string specList = "";
+                                    var c = item.DoctorSpecialties.ToList();
+                                    for (int i = 1; i < specCount; i++)
+                                    {
+                                        specList += c[i].Specialty.SpecialtyName + " <br />";
+                                    }
+                                    <a class="" role="button" data-toggle="collapse" href="#collapseSum@(item.ID)" aria-expanded="false" aria-controls="collapseSum@(item.ID)">
+                                        @firstSpec... <span class="badge badge-info">@specCount</span>
+                                    </a>
+                                    <div class="collapse" id="collapseSum@(item.ID)">
+                                        @Html.Raw(specList)
+                                    </div>
+                                }
+                                else
+                                {
+                                    @firstSpec
+                                }
+                            }
+                        }
+                        @*For help with Bootstrap Collapse see: https://getbootstrap.com/docs/4.0/components/collapse/*@
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.ID">Details</a>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            @:|
+                            <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <partial name="_PagingNavBar" />
+</form>

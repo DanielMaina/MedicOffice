@@ -1,0 +1,54 @@
+﻿@model MedicalOffice.Models.DoctorPhysicalDescription
+@{
+    MedicalOffice.Models.Doctor doctor = (MedicalOffice.Models.Doctor)ViewBag.Doctor;
+}
+@if (Model?.DoctorID > 0)
+{
+    <div>
+        <h4>Physical Description</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Height)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Height)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Weight)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Weight)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.HairColour)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.HairColour)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.IdentifyingMarks)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.IdentifyingMarks)
+            </dd>
+        </dl>
+        <div class="ml-4">
+            <a asp-controller="DoctorPhysicalDescriptions" asp-action="Update" asp-route-ID="@Model.DoctorID" asp-route-DoctorName="@doctor.FullName" >
+                <span class="btn btn-primary"><strong>&#x270D; Update</strong></span>
+            </a>
+        </div>
+    </div>
+}
+else
+{
+    <p>
+        No Physical Description Entered.
+    </p>
+    <div class="ml-4">
+        <a asp-controller="DoctorPhysicalDescriptions" asp-action="Add" asp-route-DoctorID="@doctor.ID" asp-route-DoctorName="@doctor.FullName">
+            <span class="btn btn-success"><strong>&#x271A; Add</strong></span>
+        </a>
+    </div>
+}
+

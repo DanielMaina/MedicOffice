@@ -1,0 +1,3 @@
+﻿Add-Migration -Context MedicalOfficeContext
+Update-Database -Context MedicalOfficeContext
+Update-Database -Context ApplicationDbContext

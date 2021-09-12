@@ -1,0 +1,10 @@
+﻿<br />
+<div class="col-md-8">
+    <h4 id="MedicalTrials">Medical Trials</h4>
+    @Html.DropDownList("MedicalTrialsID", null, htmlAttributes: new { @size = 10, @class = "form-control" })
+    <div>
+        <a asp-controller="MedicalTrials" asp-action="Create">Create</a> |
+        <a asp-controller="MedicalTrials" asp-action="Edit" class="linkClick">Edit</a> |
+        <a asp-controller="MedicalTrials" asp-action="Delete" class="linkClick">Delete</a>
+    </div>
+</div>

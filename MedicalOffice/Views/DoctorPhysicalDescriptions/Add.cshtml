@@ -1,0 +1,47 @@
+﻿@model MedicalOffice.Models.DoctorPhysicalDescription
+
+@{
+    ViewData["Title"] = "Add Physical Description";
+}
+
+
+<h3>Add Physical Description for Doctor: @ViewData["DoctorName"]</h3>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <input type="hidden" name="DoctorID" value="@Model.DoctorID" />
+            <input type="hidden" name="DoctorName" value="@ViewData["DoctorName"]" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Height" class="control-label"></label>
+                <input asp-for="Height" class="form-control" />
+                <span asp-validation-for="Height" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Weight" class="control-label"></label>
+                <input asp-for="Weight" class="form-control" />
+                <span asp-validation-for="Weight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HairColour" class="control-label"></label>
+                <input asp-for="HairColour" class="form-control" />
+                <span asp-validation-for="HairColour" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdentifyingMarks" class="control-label"></label>
+                <textarea asp-for="IdentifyingMarks" class="form-control"></textarea>
+                <span asp-validation-for="IdentifyingMarks" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Details" asp-controller="Doctors" asp-route-ID="@Model.DoctorID" >Back to Doctor</a>
+</div>
+
